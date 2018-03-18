@@ -1,0 +1,61 @@
+
+void Logic() {
+	
+	switch (dir)
+	{
+	case LEFT:
+		x--;
+		dir = STOP;
+		break;
+	case RIGHT:
+		x++;
+		dir = STOP;
+		break;
+	case UP:
+		y--;
+		dir = STOP;
+		break;
+	case DOWN:
+		y++;
+		dir = STOP;
+		break;
+	case SHOT:
+		cout << "BO!";
+
+	}
+
+	if (x >= width - 1)
+		x = 0;
+	
+	else if (x < 0)
+		x = width - 2;
+
+	if (y >= height)
+		y = 0;
+	else if (y < 0)
+		y = height - 1;
+
+	
+	if (x == tankX && y == tankY) {
+		score += 10;
+		tankX = rand() % width;
+		tankY = rand() % height;
+		
+	}
+}
+
+int main()
+{
+	system("color a");
+	Setup();
+	while (!gameOver) {
+		Draw();
+		Input();
+		Logic();
+
+	}
+
+	cout << "GAMEOVER";
+	system("pause");
+	return 0;
+}
